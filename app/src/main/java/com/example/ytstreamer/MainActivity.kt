@@ -17,10 +17,10 @@ import com.example.ytstreamer.audio.GainMicrophoneSource
 import com.example.ytstreamer.databinding.ActivityMainBinding
 import com.pedro.encoder.input.video.CameraHelper
 import com.pedro.encoder.utils.gl.TranslateTo
-import com.pedro.extrasource.CameraUvcSource
+import com.pedro.extrasources.CameraUvcSource
 import com.pedro.encoder.input.gl.render.filters.`object`.ImageObjectFilterRender
 import com.pedro.library.generic.GenericStream
-import com.pedro.library.util.sources.video.Camera2Source
+import com.pedro.encoder.input.sources.video.Camera2Source
 import com.pedro.common.ConnectChecker
 
 /**
