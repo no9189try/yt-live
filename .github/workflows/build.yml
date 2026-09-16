@@ -19,20 +19,30 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: Build with Gradle
         run: |
+          # Check if project files are inside a subfolder
+          if [ -d "YTStreamer" ] && [ -f "YTStreamer/settings.gradle" ]; then
+            cd YTStreamer
+          elif [ ! -f "settings.gradle" ]; then
+            TARGET_DIR=$(find . -maxdepth 2 -name "settings.gradle" -exec dirname {} \;)
+            if [ -n "$TARGET_DIR" ]; then
+              cd "$TARGET_DIR"
+            fi
+          fi
+
+          echo "Current build directory: $(pwd)"
+          ls -la
+
+          # Execute build
           if [ -f "./gradlew" ]; then
             chmod +x ./gradlew
-            ./gradlew assembleDebug
-          elif [ -f "./YTStreamer/gradlew" ]; then
-            cd YTStreamer
-            chmod +x ./gradlew
-            ./gradlew assembleDebug
+            ./gradlew assembleDebug --stacktrace
           else
-            gradle assembleDebug
+            gradle assembleDebug --stacktrace
           fi
 
       - name: Upload APK
@@ -40,3 +50,4 @@ jobs:
         with:
           name: app-debug
           path: "**/build/outputs/apk/debug/*.apk"
+          
