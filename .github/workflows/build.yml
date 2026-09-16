@@ -19,12 +19,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Accept Android SDK Licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - name: Build with Gradle
         run: |
-          # Check if project files are inside a subfolder
+          # Check folder structure
           if [ -d "YTStreamer" ] && [ -f "YTStreamer/settings.gradle" ]; then
             cd YTStreamer
           elif [ ! -f "settings.gradle" ]; then
@@ -34,10 +35,10 @@ jobs:
             fi
           fi
 
-          echo "Current build directory: $(pwd)"
+          echo "Working directory: $(pwd)"
           ls -la
 
-          # Execute build
+          # Run build
           if [ -f "./gradlew" ]; then
             chmod +x ./gradlew
             ./gradlew assembleDebug --stacktrace
