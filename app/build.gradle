@@ -44,10 +44,10 @@ dependencies {
 
     // RTMP streaming library (camera + mic capture -> RTMP)
     // https://github.com/pedroSG94/RootEncoder
-    implementation 'com.github.pedroSG94.RootEncoder:library:2.7.3'
+    implementation 'com.github.pedroSG94.RootEncoder:library:2.8.1'
     // extra-sources: adds CameraUvcSource (external UVC camera / HDMI capture card via USB-OTG)
     // and CameraXSource. Required for the external capture card feature.
-    implementation 'com.github.pedroSG94.RootEncoder:extra-sources:2.7.3'
+    implementation 'com.github.pedroSG94.RootEncoder:extra-sources:2.8.1'
 
     // For picking a logo/image from gallery (modern Photo Picker, no storage permission needed)
     implementation 'androidx.activity:activity-ktx:1.9.0'
