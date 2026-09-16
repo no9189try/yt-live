@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.YTStreamer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FF0000</item>
+        <item name="colorPrimaryDark">#B71C1C</item>
+        <item name="colorAccent">#FF0000</item>
+        <item name="android:statusBarColor">#000000</item>
+    </style>
+</resources>
